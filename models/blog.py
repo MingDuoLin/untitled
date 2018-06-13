@@ -53,17 +53,18 @@ class Post(Model):  # 博客文章数据属性
         return ms
 
     @classmethod
-    def count(cls):
-        ms = cls.all()
-        return len(ms)
+    def count(cls, all_post):
+        return len(all_post)
 
     @classmethod
     def page_post(cls, all_posts, skip, limit):
         start = skip
         end = skip + limit
         if end > len(all_posts):
-            end = -1
-        ms = all_posts[start:end]
+            ms = all_posts[start:]
+        else:
+            ms = all_posts[start:end]
+        log('all_posts:{} start:{} end:{} len(ms):{}'.format(len(all_posts), start, end, len(ms)))
         return ms
 
 

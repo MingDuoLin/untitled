@@ -88,14 +88,5 @@
     "create_time": 1490161714,
     "update_time": 1490161295,
     "tids": [1]
-  },
-  {
-    "id": 11,
-    "title": "test11",
-    "content": "hello world 11    ",
-    "author": "akirayu",
-    "create_time": 1490161294,
-    "update_time": 1490161295,
-    "tids": [1,2]
   }
 ]

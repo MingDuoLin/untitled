@@ -37,7 +37,7 @@ def index():
         all_posts = Post.find_tags(tids=tid)
     else:
         all_posts = Post.all()
-    count = Post.count()
+    count = Post.count(all_posts)
     all_posts = Post.page_post(all_posts, skip=start, limit=PAGE_COUNT)
     pagination = Pagination(page, PAGE_COUNT, count)
     return render_template('blog/index.html', posts=all_posts, pagination=pagination, tags=Tags.all())
@@ -46,9 +46,12 @@ def index():
 #/blog/1
 @blog.route("/post/<int:blog_id>", methods=["GET"])
 def post(blog_id):
-    comments = PostComment.find_all(blog_id=blog_id)
-    blog = Post.find(blog_id)
-    return render_template("blog_view.html", blog=blog, comments = comments)
+    # comments = PostComment.find_all(blog_id=blog_id)
+    # blog = Post.find(blog_id)
+    p = Post.find(id = blog_id)
+    # 获得该博客的评论
+    comments = PostComment.find_all(blog_id = blog_id)
+    return render_template('blog/post.html', id=blog_id, post=p, tags=Tags.all(), comments=comments)
 
 
 @blog.route("/post/new", methods=["GET"])
