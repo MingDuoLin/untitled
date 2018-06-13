@@ -11,10 +11,13 @@ from models.blog import (
     Post,
     PostComment,
     Tags,
+    Reply,
 )
 
 
 from models import Pagination
+from models.user import User
+
 
 # 创建一个 蓝图对象 并且路由定义在蓝图对象中
 # 然后在 flask 主代码中「注册蓝图」来使用
@@ -48,10 +51,20 @@ def index():
 def post(blog_id):
     # comments = PostComment.find_all(blog_id=blog_id)
     # blog = Post.find(blog_id)
-    p = Post.find(id = blog_id)
+    p = Post.find(id=blog_id)
     # 获得该博客的评论
-    comments = PostComment.find_all(blog_id = blog_id)
-    return render_template('blog/post.html', id=blog_id, post=p, tags=Tags.all(), comments=comments)
+    comments = PostComment.find_all(post_id=blog_id)
+    uids = set()
+    for c in comments:
+        uids.add(c.uid)
+        for r in Reply.find_all(comment_id=c.id):
+            uids.add(r.uid)
+    user_dict = {}
+    for uid in list(uids):
+        u = User.find(id=uid)
+        user_dict[u.id] = u
+    return render_template('blog/post.html', id=blog_id, post=p,tags=Tags.all(), Replay=Reply,
+                           comments=comments, user_dict=user_dict)
 
 
 @blog.route("/post/new", methods=["GET"])

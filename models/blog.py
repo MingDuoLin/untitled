@@ -75,4 +75,14 @@ class PostComment(Model):  # 博客评论数据属性
         self.author = form.get('author', '')
         self.post_id = int(form.get('post_id', 0))
         self.create_time = int(time.time())
+        self.uid = form.get('uid', '')
 
+
+class Reply(Model):  # 评论属性
+    def __init__(self, form):
+        self.id = None
+        self.comment_id = form.get('comment_id', '') # 对应评论的回复
+        self.uid = form.get('uid', '') # 发表回复的人
+        self.rid = form.get('rid', '')  # 接受回复的人
+        self.content = form.get('content', '')  # 内容
+        self.create_time = int(time.time())  # 创建时间

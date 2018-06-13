@@ -32,7 +32,90 @@
                         </span>
                     </div>
                 </div>
+                <div id="div-comments" class="p-t-10 m-b-20">
+                    <h4>{{ ('There are totally {}s comments'.format(comments|length)) }}</h4>
+                    <hr>
+                    {% for c in comments %}
+                        <div class="media m-b-20">
+                            <div class="media-left">
+                                <a href="javascript:;">
+                                    {% set user = user_dict[c.uid] %}
+                                    <img class="media-object thumb-sm"
+                                         src="{{ user.head if user and user.head else '/static/img/avatar.png' }}">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="javascript:;">{{ user.name if user else '-' }}</a>
+                                </h4>
+                                <p>{{ c.content }}</p>
+                                <div>
+                                    <span class="text-muted">{{ c.time }}</span>
+                                    <a href="javascript:;" class="pull-right text-muted" onclick="toggleReply($(this))">
+                                        <i class="fa fa-reply"></i> {{ ('Reply') }}
+                                    </a>
+                                    <div class="well well-sm m-t-10 m-b-0 reply-form" style="display:none">
+                                        <div class="input-group">
+                                            <input class="form-control"/>
+                                            <span class="input-group-btn">
+                                                <a href="javascript:;" onclick="reply($(this))" class="btn btn-default"
+                                                   cid="{{ c.id }}" rid="{{ c.uid }}">{{ ('Submit') }}
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {% for r in Replay.find_all(comment_id=c.id)%}
+                                        <hr>
+                                        <div class="media m-b-20">
+                                            <div class="media-left">
+                                                <a href="javascript:;">
+                                                    {% set user = user_dict[r.uid] %}
+                                                    <img class="media-object thumb-sm"
+                                                         src="{{ user.head if user and user.head else '/static/img/avatar.png' }}">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="media-heading"><a
+                                                        href="javascript:;">{{ user.name if user else '-' }}</a>
+                                                    {{ ('replys') }}
+                                                    {% set ruser = user_dict[r.rid]|safe %}
+                                                    <a href="javascript:;">{{ ruser.name if ruser else '-' }}</a>
+                                                </h5>
+                                                <p>{{ r.content }}</p>
+                                                <div>
+                                                    <span class="text-muted">{{ r.time}}</span>
+                                                    <a href="javascript:;" class="pull-right text-muted"
+                                                       onclick="toggleReply($(this))">
+                                                        <i class="fa fa-reply"></i> {{ ('Reply') }}
+                                                    </a>
+                                                    <div class="well well-sm m-t-10 m-b-0 reply-form"
+                                                         style="display:none">
+                                                        <div class="input-group">
+                                                            <input class="form-control"/>
+                                                            <span class="input-group-btn">
+                                                                <a href="javascript:;" onclick="reply($(this))"
+                                                                   class="btn btn-default"
+                                                                   cid="{{ c.id }}"
+                                                                   rid="{{ r.uid }}">{{ ('Submit') }}</a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                    <h4 class="p-t-10">{{ ('Leave a comment') }}</h4>
+                    <div class="m-b-20">
+                        <textarea class="form-control m-b-10" rows="3"></textarea>
+                        <button class="btn btn-primary"
+                                onclick="comment($(this))">{{ ('Submit') }}</button>
+                    </div>
+                </div>
             </div>
 
             <!-- left end -->

@@ -4,13 +4,15 @@
     "post_id": 1,
     "author": "akira",
     "content": "test",
-    "create_time": 1490186970
+    "create_time": 1490186970,
+    "uid": 1
   },
   {
     "id": 2,
     "post_id": 1,
     "author": "test",
     "content": "good",
-    "create_time": 1490187272
+    "create_time": 1490187272,
+    "uid": 2
   }
 ]
