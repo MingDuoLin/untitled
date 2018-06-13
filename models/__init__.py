@@ -1,4 +1,6 @@
 from math import ceil
+
+
 class Pagination(object):
     """
     Pagination support.
@@ -32,3 +34,5 @@ class Pagination(object):
                     yield None
                 yield num
                 last = num
+
+

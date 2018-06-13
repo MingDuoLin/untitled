@@ -4,6 +4,9 @@ from flask import (
     redirect,
     url_for,
     Blueprint,
+    abort,
+    current_app,
+    jsonify,
 )
 
 
@@ -17,6 +20,7 @@ from models.blog import (
 
 from models import Pagination
 from models.user import User
+from utils import log
 
 
 # 创建一个 蓝图对象 并且路由定义在蓝图对象中
@@ -46,7 +50,7 @@ def index():
     return render_template('blog/index.html', posts=all_posts, pagination=pagination, tags=Tags.all())
 
 
-#/blog/1
+# /blog/1
 @blog.route("/post/<int:blog_id>", methods=["GET"])
 def post(blog_id):
     # comments = PostComment.find_all(blog_id=blog_id)
@@ -67,9 +71,41 @@ def post(blog_id):
                            comments=comments, user_dict=user_dict)
 
 
-@blog.route("/post/new", methods=["GET"])
-def new():
-    return render_template("blog_new.html")
+@blog.route('/post/new', methods=('GET', 'POST'))
+@blog.route('/post/change/<int:post_id>', methods=('GET', 'POST'))
+def new(post_id=None):
+    # 渲染new.html页面
+    if request.method == 'GET':
+        p = None
+        if post_id: # 如果post_id不为None,则是修改页面；否则为新建页面
+            p = Post.find(id=post_id)
+            if not p:
+                abort(404)
+        return render_template('blog/new.html', post=p, tags=Tags.all())
+    else:
+        log('request.form:{}'.format(request.form))
+        post = Post.new({})
+        post.title = request.form['title']
+        post.content = request.form['content']  # 这里标签需要重新初始化，这是一个bug
+        tmp_list = []
+        for l in list(request.form['tids']):
+            tmp_list.append(l)
+        # 建议重载函数
+        post.tids = tmp_list
+        log('post.title:{} post.content:{} post.tids:{}'.format(post.title, post.content, post.tids))
+
+        # 新建博客
+        if not post_id:
+            post.author = 'admin'
+            post.save()  # 更新信息
+            post_id = post.id
+            current_app.logger.info('Successfully new a post {}'.format(post_id))
+        # 修改博客
+        else:
+            pass
+
+    return jsonify(success=True, message='Save the post successfully.', pid=str(post_id))
+
 
 @blog.route("/add", methods=["POST"])
 def add():

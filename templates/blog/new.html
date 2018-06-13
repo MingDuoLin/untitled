@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %}{{ _('Change Post') if post else _('New Post') }}{% endblock %}
+{% block title %}{{ ('编辑博客') if post else ('新建博客') }}{% endblock %}
 
 {% block style %}
     <link href="{{ base_url() }}/plugins/chosen/chosen.min.css" rel="stylesheet">
@@ -26,49 +26,36 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h2>{{ _('Change Post') if post else _('New Post') }}</h2>
+                <h2>{{ ('编辑博客') if post else ('新建博客') }}</h2>
                 <form class="m-b-20">
                     <div class="form-group">
-                        <label>{{ _('Title') }}</label>
+                        <label>{{ ('标题') }}</label>
                         <input id="post-title" class="form-control" value="{{ post.title if post else '' }}"/>
                     </div>
                     <div class="form-group">
-                        <label>{{ _('Tags') }}</label>
-                        <select data-placeholder="{{ _('Choose a tag...') }}" id="post-tags" multiple
+                        <label>{{ ('标签') }}</label>
+                        <select data-placeholder="{{ ('Choose a tag...') }}" id="post-tags" multiple
                                 class="form-control">
                             {% for t in tags %}
-                                <option value="{{ t._id }}" {{ 'selected' if post and t._id in post.tids else '' }}>{{ t.name }}</option>
+                                <option value="{{ t.id }}" {{ 'selected' if post and t._id in post.tids else '' }}>{{ t.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>{{ _('Body') }}</label>
-                        <div id="post-body" contenteditable>{{ post.body|safe if post else '' }}</div>
+                        <label>{{ ('内容') }}</label>
+                        <div id="post-body" contenteditable>{{ post.content|safe if post else '' }}</div>
                     </div>
-                    <button type="button" class="btn btn-primary" onclick="save($(this))">{{ _('Save') }}</button>
+                    <button type="button" class="btn btn-primary" onclick="save($(this))">{{ ('保存') }}</button>
                 </form>
             </div>
             <div class="col-md-4">
                 <div class="m-b-20">
-                    <h3>{{ _('Tags') }}</h3>
-                    <a href="/blog/index" class="btn btn-primary">#{{ _('All') }}</a>
+                    <h3>{{ ('Tags') }}</h3>
+                    <a href="/blog/index" class="btn btn-primary">#{{ ('All') }}</a>
                     {% for t in tags %}
-                        <a href="/blog/index?t={{ t._id }}"
-                           class="btn btn-primary">#{{ _(t.name) }}</a>
+                        <a href="/blog/index?t={{ t.id }}"
+                           class="btn btn-primary">#{{ (t.name) }}</a>
                     {% endfor %}
-                </div>
-                <div>
-                    <h3>{{ _('Editing Helps') }}</h3>
-                    <p>{{ _('Select to apply effect, click items of toolbar to toggle effects.') }}</p>
-                    <p>{{ _('Markdown commands are supported:') }}</p>
-                    <ul>
-                        <li>{{ _('Headings: type 1~6 <code>#</code> at the line start') }}</li>
-                        <li>{{ _('Unordered List: type <code>-</code> or <code>*</code>') }}</li>
-                        <li>{{ _('Ordered List: type <code>1.</code>') }}</li>
-                        <li>{{ _('Code block: type <strong>```</strong>') }}</li>
-                        <li>{{ _('Block Quote: type <code>&gt;</code>') }}</li>
-                        <li>{{ _('Horizontal Rule: more than 3 <code>-</code>, <code>*</code>, <code>.</code> will create a <code>&lt;hr /&gt;</code>, like <code>......</code>') }}</li>
-                    </ul>
                 </div>
             </div>
 
@@ -107,7 +94,7 @@
             if (btn.is(".doing")) {
                 return;
             }
-            var con = window.confirm("{{ _('Sure to publish this post?') }}");
+            var con = window.confirm("{{ ('Sure to publish this post?') }}");
             if (!con) {
                 return false;
             }
@@ -115,11 +102,11 @@
             var title = $("#post-title").val();
             var body = $("#post-body").html();
             if (!title) {
-                showError("{{ _('Post title can not be blank!') }}");
+                showError("{{ ('Post title can not be blank!') }}");
                 return false;
             }
             if (!body) {
-                showError("{{ _('Post body can not be blank!') }}");
+                showError("{{ ('Post body can not be blank!') }}");
                 return false;
             }
 
@@ -131,15 +118,22 @@
 
             var param = {"r": Math.random()};
             {% if post %}
-                var action = "/blog/post/change/{{ post._id }}";
+                var action = "/blog/post/change/{{ post.id }}";
             {% else %}
                 var action = "/blog/post/new";
             {% endif %}
-            param["post.title"] = title;
-            param["post.body"] = body;
+            param["title"] = title;
+            param["content"] = body;
+            var p = new Array();
             $("#post-tags option:selected").each(function (i, n) {
-                param["post.tids[" + i + "]"] = $(n).attr("value");
+                p["tids[" + i + "]"] = $(n).attr("value");
             });
+            var str = ""
+            for (var key in p){
+                l1 = p[key]
+                str = str+l1+","
+            }
+            param["tids"]  = "["+str+"]"
 
             // Post
             $.post(action, param, function (result) {

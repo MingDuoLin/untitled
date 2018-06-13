@@ -30,7 +30,7 @@ class Post(Model):  # 博客文章数据属性
         self.id = None                          # 博文ID
         self.title = form.get('title', '')      # 标题
         self.content = form.get('content', '')  # 内容
-        self.tids = list(form.get('tids', '[]'))  # 标签ID列表
+        self.tids = form.get('tids', '[]')  # 标签ID列表
         self.author = form.get('author', '')    # 作者
         self.create_time = int(time.time())     # 创建时间
         self.update_time = form.get('update_time', self.create_time)  # 更新时间
