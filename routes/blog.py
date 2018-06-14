@@ -87,11 +87,12 @@ def new(post_id=None):
         post = Post.new({})
         post.title = request.form['title']
         post.content = request.form['content']  # 这里标签需要重新初始化，这是一个bug
-        tmp_list = []
-        for l in list(request.form['tids']):
-            tmp_list.append(l)
-        # 建议重载函数
-        post.tids = tmp_list
+        str_tids = request.form['tids']  # 从文件中读出的问题，获得的格式为'[1，2]'，需要的格式为[1，2]
+        str_tids = str_tids.split(' ')
+        list_tids = []
+        for i in range(len(str_tids)-1):
+            list_tids.append(int(str_tids[i]))
+        post.tids = list_tids
         log('post.title:{} post.content:{} post.tids:{}'.format(post.title, post.content, post.tids))
 
         # 新建博客
@@ -102,7 +103,13 @@ def new(post_id=None):
             current_app.logger.info('Successfully new a post {}'.format(post_id))
         # 修改博客
         else:
-            pass
+            exist_post = Post.find(id=post_id)
+            exist_post.title = post.title
+            exist_post.content = post.content
+            exist_post.tids = post.tids
+            exist_post.save()
+            Post.delete(id=post.id)
+            current_app.logger.info('Successfully change a post {}'.format(exist_post.id))
 
     return jsonify(success=True, message='Save the post successfully.', pid=str(post_id))
 

@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 <div class="m-b-20">
-                    <h3>{{ ('Tags') }}</h3>
+                    <h3>{{ ('标签') }}</h3>
                     <a href="/blog/index" class="btn btn-primary">#{{ ('All') }}</a>
                     {% for t in tags %}
                         <a href="/blog/index?t={{ t.id }}"
@@ -131,9 +131,9 @@
             var str = ""
             for (var key in p){
                 l1 = p[key]
-                str = str+l1+","
+                str = str+l1+" "
             }
-            param["tids"]  = "["+str+"]"
+            param["tids"]  = str
 
             // Post
             $.post(action, param, function (result) {
