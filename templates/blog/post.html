@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div id="div-comments" class="p-t-10 m-b-20">
-                    <h4>{{ ('There are totally {}s comments'.format(comments|length)) }}</h4>
+                    <h4>{{ ('评论数:{}'.format(comments|length)) }}</h4>
                     <hr>
                     {% for c in comments %}
                         <div class="media m-b-20">
@@ -49,7 +49,7 @@
                                 </h4>
                                 <p>{{ c.content }}</p>
                                 <div>
-                                    <span class="text-muted">{{ c.time }}</span>
+                                    <span class="text-muted">{{ c.create_time }}</span>
                                     <a href="javascript:;" class="pull-right text-muted" onclick="toggleReply($(this))">
                                         <i class="fa fa-reply"></i> {{ ('Reply') }}
                                     </a>
@@ -58,7 +58,7 @@
                                             <input class="form-control"/>
                                             <span class="input-group-btn">
                                                 <a href="javascript:;" onclick="reply($(this))" class="btn btn-default"
-                                                   cid="{{ c.id }}" rid="{{ c.uid }}">{{ ('Submit') }}
+                                                   cid="{{ c.id }}" rid="{{ c.uid }}">{{ ('提交') }}
                                                 </a>
                                             </span>
                                         </div>
@@ -76,13 +76,13 @@
                                             <div class="media-body">
                                                 <h5 class="media-heading"><a
                                                         href="javascript:;">{{ user.name if user else '-' }}</a>
-                                                    {{ ('replys') }}
+                                                    {{ ('回复') }}
                                                     {% set ruser = user_dict[r.rid]|safe %}
                                                     <a href="javascript:;">{{ ruser.name if ruser else '-' }}</a>
                                                 </h5>
                                                 <p>{{ r.content }}</p>
                                                 <div>
-                                                    <span class="text-muted">{{ r.time}}</span>
+                                                    <span class="text-muted">{{ r.create_time}}</span>
                                                     <a href="javascript:;" class="pull-right text-muted"
                                                        onclick="toggleReply($(this))">
                                                         <i class="fa fa-reply"></i> {{ ('Reply') }}
@@ -95,7 +95,7 @@
                                                                 <a href="javascript:;" onclick="reply($(this))"
                                                                    class="btn btn-default"
                                                                    cid="{{ c.id }}"
-                                                                   rid="{{ r.uid }}">{{ ('Submit') }}</a>
+                                                                   rid="{{ r.uid }}">{{ ('提交') }}</a>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -109,11 +109,11 @@
                         </div>
                         <hr>
                     {% endfor %}
-                    <h4 class="p-t-10">{{ ('Leave a comment') }}</h4>
+                    <h4 class="p-t-10">{{ ('评论') }}</h4>
                     <div class="m-b-20">
                         <textarea class="form-control m-b-10" rows="3"></textarea>
                         <button class="btn btn-primary"
-                                onclick="comment($(this))">{{ ('Submit') }}</button>
+                                onclick="comment($(this))">{{ ('提交') }}</button>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@
             if (btn.is(".doing")) {
                 return;
             }
-            var con = window.confirm("{{ ('Sure to submit this comment?') }}");
+            var con = window.confirm("{{ ('确认提交评论吗？') }}");
             if (!con) {
                 return false;
             }
@@ -165,7 +165,7 @@
             var oldLabel = btn[method]();
             btn[method](oldLabel + "...");
 
-            $.post("/blog/comment/{{ post._id }}", {
+            $.post("/blog/comment/{{ post.id }}", {
                 "r": Math.random(),
                 "content": btn.prev("textarea").val()
             }, function (result) {

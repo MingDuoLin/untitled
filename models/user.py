@@ -9,5 +9,5 @@ class User(Model):
     def __init__(self, form):
         self.id = form.get('id', None)
         self.name = form.get('name', '游客')
-        self.username = form.get('username', '')
+        # self.username = form.get('username', '')
         self.password = form.get('password', '')

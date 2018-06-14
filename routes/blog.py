@@ -67,7 +67,7 @@ def post(blog_id):
     for uid in list(uids):
         u = User.find(id=uid)
         user_dict[u.id] = u
-    return render_template('blog/post.html', id=blog_id, post=p,tags=Tags.all(), Replay=Reply,
+    return render_template('blog/post.html', id=blog_id, post=p, tags=Tags.all(), Replay=Reply,
                            comments=comments, user_dict=user_dict)
 
 
@@ -114,15 +114,22 @@ def new(post_id=None):
     return jsonify(success=True, message='Save the post successfully.', pid=str(post_id))
 
 
-@blog.route("/add", methods=["POST"])
-def add():
-    form = request.form
-    Post.new(form)
-    return redirect(url_for('.index'))
+@blog.route('/comment/<int:post_id>', methods=('POST',))
+def comment(post_id):
+    """
+    评论博文.
+    """
+    post = Post.find(id=post_id)
+    if not post:
+        return jsonify(success=False, message='该博文不存在!')
+
+    log(request.form['content'])
+    comment = PostComment.new({})
+    comment.content = request.form['content']
+    comment.post_id = post_id
+    comment.uid = 2  # current_usr_id,此处应为当前用户的id，由于没有加入用户认证，目前将该id设为2，名称为游客
+    comment.save()
+
+    return jsonify(success=True, message='评论提交成功.')
 
 
-@blog.route("/comment/new", methods=["POST"])
-def comment():
-    form = request.form
-    PostComment.new(form)
-    return redirect(url_for('.view', blog_id=form.get("blog_id")))
