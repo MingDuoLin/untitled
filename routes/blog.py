@@ -133,3 +133,26 @@ def comment(post_id):
     return jsonify(success=True, message='评论提交成功.')
 
 
+@blog.route('/reply/<int:comment_id>', methods=('POST',))
+def reply(comment_id):
+    """
+    回复.
+    """
+    c = PostComment.find(id=comment_id)
+    if not c:
+        return jsonify(success=False, message='回复的评论不存在!')
+
+    content = request.form.get('content', None)
+    if not content or len(content.strip()) == 0:
+        return jsonify(success=False, message='回复不能为空!')
+
+    reply = Reply.new({})
+    reply.comment_id = comment_id
+    reply.rid = request.form['rid']
+    reply.uid = 1  # current_usr_id,此处应为当前用户的id，由于没有加入用户认证，目前将该id设为1，名称为管理员
+    reply.content = request.form['content']
+    reply.save()
+
+    return jsonify(success=True, message='回复成功.')
+
+

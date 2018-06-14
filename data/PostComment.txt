@@ -5,7 +5,7 @@
     "author": "akira",
     "post_id": 1,
     "create_time": 1490186970,
-    "uid": 1
+    "uid": 2
   },
   {
     "id": 2,

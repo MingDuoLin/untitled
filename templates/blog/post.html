@@ -190,7 +190,7 @@
             if (btn.is(".doing")) {
                 return;
             }
-            var con = window.confirm("{{ ('Sure to submit this reply?') }}");
+            var con = window.confirm("{{ ('确定要提交回复吗?') }}");
             if (!con) {
                 return false;
             }
@@ -200,7 +200,7 @@
             var oldLabel = btn[method]();
             btn[method](oldLabel + "...");
 
-            $.post("/blog/reply/{{ post._id }}/" + btn.attr("cid"), {
+            $.post("/blog/reply/" + btn.attr("cid"), {
                 "r": Math.random(),
                 "content": btn.parent().prev("input").val(),
                 "rid": btn.attr("rid")
