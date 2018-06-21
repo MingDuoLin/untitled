@@ -22,29 +22,5 @@
     "rid": "1",
     "content": "哈哈",
     "create_time": 1528973931
-  },
-  {
-    "id": 4,
-    "comment_id": 1,
-    "uid": 1,
-    "rid": "2",
-    "content": "天下",
-    "create_time": 1528973965
-  },
-  {
-    "id": 5,
-    "comment_id": 1,
-    "uid": 1,
-    "rid": "1",
-    "content": "哈哈",
-    "create_time": 1528973976
-  },
-  {
-    "id": 6,
-    "comment_id": 3,
-    "uid": 1,
-    "rid": "2",
-    "content": "你拿我怎么办",
-    "create_time": 1528974002
   }
 ]

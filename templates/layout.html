@@ -44,7 +44,7 @@
 
                 <!-- Logo container-->
                 <div class="logo">
-                    <a href="/" class="logo"><span>MD.Lin 博客</span></a>
+                    <a href="/blog" class="logo"><span>MD.Lin 博客</span></a>
                 </div>
                 <!-- End Logo container-->
 
@@ -83,7 +83,7 @@
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         <li class="{{ 'active' if request.endpoint and request.endpoint == 'public.index' }}">
-                            <a href="/"><i class="fa fa-home"></i>{{ ('个人简介') }}</a>
+                            <a href="/blog"><i class="fa fa-home"></i>{{ ('个人简介') }}</a>
                         </li>
                         <li class="{{ 'active' if request.endpoint and request.endpoint.startswith('blog') }}">
                             <a href="{{ url_for('blog.index') }}"><i class="fa fa-book"></i>{{ ('博客') }}</a>

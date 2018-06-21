@@ -14,21 +14,5 @@
     "post_id": 1,
     "create_time": 1490187272,
     "uid": 2
-  },
-  {
-    "id": 3,
-    "content": "哈哈哈，傻逼",
-    "author": "",
-    "post_id": 1,
-    "create_time": 1528963109,
-    "uid": 2
-  },
-  {
-    "id": 4,
-    "content": "你打我啊",
-    "author": "",
-    "post_id": 1,
-    "create_time": 1528963119,
-    "uid": 2
   }
 ]
