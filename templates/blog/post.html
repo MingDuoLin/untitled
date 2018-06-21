@@ -18,9 +18,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3>{{ post.title }}</h3>
-                        <p class="panel-sub-title">{% for t in tags %}
-                            #{{ (t.name) }}
-                        {% endfor %}</p>
+                        <p class="panel-sub-title">{% for tid in post.tids %}
+                            #{{ (tags[0].find_name(tid)) }}
+                            {% endfor %}
                     </div>
                     <div class="panel-body">
                         {{ post.content|safe }}
@@ -121,10 +121,10 @@
             <div class="col-md-4">
                 <div class="m-b-20">
                     <h3>{{ ('标签') }}</h3>
-                    <a href="/blog/index" class="btn btn-primary">#{{ ('All') }}</a>
+                    <a href="/blog/index" class="btn btn-primary m-b-5">#{{ ('All') }}</a>
                     {% for t in tags %}
                         <a href="/blog/index?t={{ t.id }}"
-                           class="btn btn-primary">#{{ (t.name) }}</a>
+                           class="btn btn-primary m-b-5">#{{ (t.name) }}</a>
                     {% endfor %}
                 </div>
 

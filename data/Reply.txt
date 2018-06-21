@@ -3,24 +3,8 @@
     "id": 1,
     "comment_id": 1,
     "uid": 1,
-    "rid": 1,
-    "content": "test",
-    "create_time": 1490186970
-  },
-  {
-    "id": 2,
-    "comment_id": 1,
-    "uid": 1,
-    "rid": 1,
-    "content": "test",
-    "create_time": 1490186970
-  },
-  {
-    "id": 3,
-    "comment_id": 1,
-    "uid": 1,
-    "rid": "1",
-    "content": "哈哈",
-    "create_time": 1528973931
+    "rid": "2",
+    "content": "好的",
+    "create_time": "2018-06-21 13:52:11"
   }
 ]

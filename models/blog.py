@@ -1,6 +1,7 @@
 import time
 from .model import Model
 from utils import log
+from utils import local_time
 """
 博客model设计：
 1）Tags：标签类
@@ -14,7 +15,7 @@ class Tags(Model):  # 标签属性
         self.id = None                          # 标签ID
         self.name = form.get('name', '')      # 标签名称
         self.weight = int(form.get('weight', 0))  # 标签对应博文数量
-        self.create_time = int(time.time())     # 创建时间
+        self.create_time = local_time()     # 创建时间
 
     @classmethod
     def find_name(cls, id):
@@ -32,7 +33,7 @@ class Post(Model):  # 博客文章数据属性
         self.content = form.get('content', '')  # 内容
         self.tids = form.get('tids', '[]')  # 标签ID列表
         self.author = form.get('author', '')    # 作者
-        self.create_time = int(time.time())     # 创建时间
+        self.create_time = local_time()    # 创建时间
         self.update_time = form.get('update_time', self.create_time)  # 更新时间
 
     @classmethod
@@ -74,7 +75,7 @@ class PostComment(Model):  # 博客评论数据属性
         self.content = form.get('content', '')
         self.author = form.get('author', '')
         self.post_id = int(form.get('post_id', 0))
-        self.create_time = int(time.time())
+        self.create_time = local_time()
         self.uid = form.get('uid', '')
 
 
@@ -85,4 +86,4 @@ class Reply(Model):  # 评论属性
         self.uid = form.get('uid', '') # 发表回复的人
         self.rid = form.get('rid', '')  # 接受回复的人
         self.content = form.get('content', '')  # 内容
-        self.create_time = int(time.time())  # 创建时间
+        self.create_time = local_time()  # 创建时间

@@ -2,112 +2,32 @@
   {
     "id": 1,
     "title": "test1",
-    "content": "<h2>hello world 1 mm</h2>",
+    "content": "<p>web开发测试啊（修改）</p>",
     "tids": [],
-    "author": "akirayu",
-    "create_time": 1490161294,
-    "update_time": 1490161295
+    "author": "admin",
+    "create_time": "2018-06-21 13:36:20",
+    "update_time": "2018-06-21 13:36:20"
   },
   {
     "id": 2,
     "title": "test2",
-    "content": "hello world 2    ",
+    "content": "<p>数据库教程</p>",
     "tids": [
-      1
+      5
     ],
-    "author": "akirayu",
-    "create_time": 1490161714,
-    "update_time": 1490161295
+    "author": "admin",
+    "create_time": "2018-06-21 13:52:44",
+    "update_time": "2018-06-21 13:52:44"
   },
   {
     "id": 3,
     "title": "test3",
-    "content": "hello world 3 编辑过",
+    "content": "<p>pthon教程</p>",
     "tids": [
-      1
+      3
     ],
-    "author": "akirayu",
-    "create_time": 1490161294,
-    "update_time": 1490161295
-  },
-  {
-    "id": 4,
-    "title": "test4",
-    "content": "hello world 4    ",
-    "tids": [
-      1
-    ],
-    "author": "akirayu",
-    "create_time": 1490161714,
-    "update_time": 1490161295
-  },
-  {
-    "id": 5,
-    "title": "test5",
-    "content": "hello world 6    ",
-    "tids": [
-      1,
-      2
-    ],
-    "author": "akirayu",
-    "create_time": 1490161294,
-    "update_time": 1490161295
-  },
-  {
-    "id": 6,
-    "title": "test6",
-    "content": "hello world 6    ",
-    "tids": [
-      1
-    ],
-    "author": "akirayu",
-    "create_time": 1490161714,
-    "update_time": 1490161295
-  },
-  {
-    "id": 7,
-    "title": "test7",
-    "content": "hello world 7    ",
-    "tids": [
-      1,
-      2
-    ],
-    "author": "akirayu",
-    "create_time": 1490161294,
-    "update_time": 1490161295
-  },
-  {
-    "id": 8,
-    "title": "test8",
-    "content": "hello world 8    ",
-    "tids": [
-      1
-    ],
-    "author": "akirayu",
-    "create_time": 1490161714,
-    "update_time": 1490161295
-  },
-  {
-    "id": 9,
-    "title": "test9",
-    "content": "hello world 9    ",
-    "tids": [
-      1,
-      2
-    ],
-    "author": "akirayu",
-    "create_time": 1490161294,
-    "update_time": 1490161295
-  },
-  {
-    "id": 10,
-    "title": "test10",
-    "content": "hello world 10    ",
-    "tids": [
-      1
-    ],
-    "author": "akirayu",
-    "create_time": 1490161714,
-    "update_time": 1490161295
+    "author": "admin",
+    "create_time": "2018-06-21 13:53:10",
+    "update_time": "2018-06-21 13:53:10"
   }
 ]

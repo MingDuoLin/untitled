@@ -1,18 +1,10 @@
 [
   {
     "id": 1,
-    "content": "test",
-    "author": "akira",
+    "content": "你好",
+    "author": "",
     "post_id": 1,
-    "create_time": 1490186970,
-    "uid": 2
-  },
-  {
-    "id": 2,
-    "content": "good",
-    "author": "test",
-    "post_id": 1,
-    "create_time": 1490187272,
+    "create_time": "2018-06-21 13:52:03",
     "uid": 2
   }
 ]

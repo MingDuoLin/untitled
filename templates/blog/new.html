@@ -51,10 +51,10 @@
             <div class="col-md-4">
                 <div class="m-b-20">
                     <h3>{{ ('标签') }}</h3>
-                    <a href="/blog/index" class="btn btn-primary">#{{ ('All') }}</a>
+                    <a href="/blog/index" class="btn btn-primary m-b-5">#{{ ('All') }}</a>
                     {% for t in tags %}
                         <a href="/blog/index?t={{ t.id }}"
-                           class="btn btn-primary">#{{ (t.name) }}</a>
+                           class="btn btn-primary m-b-5">#{{ (t.name) }}</a>
                     {% endfor %}
                 </div>
             </div>
