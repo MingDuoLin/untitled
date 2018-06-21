@@ -301,3 +301,89 @@
 13:54:31 all_posts:3 start:0 end:5 len(ms):3
 13:54:31 kwargs,  {'id': 5} <class 'dict'>
 13:54:31 kwargs,  {'id': 3} <class 'dict'>
+14:13:24 all_posts:3 start:0 end:5 len(ms):3
+14:13:24 kwargs,  {'id': 5} <class 'dict'>
+14:13:24 kwargs,  {'id': 3} <class 'dict'>
+14:18:51 all_posts:3 start:0 end:5 len(ms):3
+14:18:51 kwargs,  {'id': 5} <class 'dict'>
+14:18:51 kwargs,  {'id': 3} <class 'dict'>
+14:18:54 all_posts:3 start:0 end:5 len(ms):3
+14:18:54 kwargs,  {'id': 5} <class 'dict'>
+14:18:54 kwargs,  {'id': 3} <class 'dict'>
+14:18:56 all_posts:3 start:0 end:5 len(ms):3
+14:18:56 kwargs,  {'id': 5} <class 'dict'>
+14:18:56 kwargs,  {'id': 3} <class 'dict'>
+14:18:57 all_posts:3 start:0 end:5 len(ms):3
+14:18:57 kwargs,  {'id': 5} <class 'dict'>
+14:18:57 kwargs,  {'id': 3} <class 'dict'>
+14:18:59 kwargs,  {'id': 1} <class 'dict'>
+14:18:59 kwargs,  {'post_id': 1} <class 'dict'>
+14:18:59 kwargs,  {'comment_id': 1} <class 'dict'>
+14:18:59 kwargs,  {'id': 1} <class 'dict'>
+14:18:59 kwargs,  {'id': 2} <class 'dict'>
+14:18:59 kwargs,  {'comment_id': 1} <class 'dict'>
+14:21:21 kwargs,  {'id': 1} <class 'dict'>
+14:21:21 kwargs,  {'post_id': 1} <class 'dict'>
+14:21:21 kwargs,  {'comment_id': 1} <class 'dict'>
+14:21:21 kwargs,  {'id': 1} <class 'dict'>
+14:21:21 kwargs,  {'id': 2} <class 'dict'>
+14:21:21 kwargs,  {'comment_id': 1} <class 'dict'>
+14:47:42 request.form:ImmutableMultiDict([('r', '0.21155641528148839'), ('title', 'test4'), ('content', '<p>算法教程</p>'), ('tids', '1 ')])
+14:47:42 post.title:test4 post.content:<p>算法教程</p> post.tids:[1]
+14:47:42 debug 3
+14:47:42 kwargs,  {'id': 4} <class 'dict'>
+14:47:42 kwargs,  {'post_id': 4} <class 'dict'>
+14:47:42 kwargs,  {'id': 1} <class 'dict'>
+14:47:44 all_posts:4 start:0 end:5 len(ms):4
+14:47:44 kwargs,  {'id': 5} <class 'dict'>
+14:47:44 kwargs,  {'id': 3} <class 'dict'>
+14:47:44 kwargs,  {'id': 1} <class 'dict'>
+14:48:16 request.form:ImmutableMultiDict([('r', '0.21946357828020213'), ('title', 'test5'), ('content', '<p>机器学习教程</p>'), ('tids', '2 ')])
+14:48:16 post.title:test5 post.content:<p>机器学习教程</p> post.tids:[2]
+14:48:16 debug 4
+14:48:16 kwargs,  {'id': 5} <class 'dict'>
+14:48:16 kwargs,  {'post_id': 5} <class 'dict'>
+14:48:16 kwargs,  {'id': 2} <class 'dict'>
+14:48:18 all_posts:5 start:0 end:5 len(ms):5
+14:48:18 kwargs,  {'id': 5} <class 'dict'>
+14:48:18 kwargs,  {'id': 3} <class 'dict'>
+14:48:18 kwargs,  {'id': 1} <class 'dict'>
+14:48:18 kwargs,  {'id': 2} <class 'dict'>
+14:48:36 request.form:ImmutableMultiDict([('r', '0.20185653570341544'), ('title', 'test6'), ('content', '<p>web开发教程</p>'), ('tids', '4 ')])
+14:48:36 post.title:test6 post.content:<p>web开发教程</p> post.tids:[4]
+14:48:36 debug 5
+14:48:36 kwargs,  {'id': 6} <class 'dict'>
+14:48:36 kwargs,  {'post_id': 6} <class 'dict'>
+14:48:36 kwargs,  {'id': 4} <class 'dict'>
+14:48:38 all_posts:6 start:0 end:5 len(ms):5
+14:48:38 kwargs,  {'id': 5} <class 'dict'>
+14:48:38 kwargs,  {'id': 3} <class 'dict'>
+14:48:38 kwargs,  {'id': 1} <class 'dict'>
+14:48:38 kwargs,  {'id': 2} <class 'dict'>
+14:48:40 all_posts:6 start:5 end:10 len(ms):1
+14:48:40 kwargs,  {'id': 4} <class 'dict'>
+14:48:42 kwargs,  {'tids': '1'} <class 'dict'>
+14:48:42 all_posts:1 start:0 end:5 len(ms):1
+14:48:42 kwargs,  {'id': 1} <class 'dict'>
+14:48:45 all_posts:6 start:0 end:5 len(ms):5
+14:48:45 kwargs,  {'id': 5} <class 'dict'>
+14:48:45 kwargs,  {'id': 3} <class 'dict'>
+14:48:45 kwargs,  {'id': 1} <class 'dict'>
+14:48:45 kwargs,  {'id': 2} <class 'dict'>
+14:48:46 kwargs,  {'tids': '2'} <class 'dict'>
+14:48:46 all_posts:1 start:0 end:5 len(ms):1
+14:48:46 kwargs,  {'id': 2} <class 'dict'>
+14:48:47 kwargs,  {'tids': '3'} <class 'dict'>
+14:48:47 all_posts:1 start:0 end:5 len(ms):1
+14:48:47 kwargs,  {'id': 3} <class 'dict'>
+14:48:48 kwargs,  {'tids': '4'} <class 'dict'>
+14:48:48 all_posts:1 start:0 end:5 len(ms):1
+14:48:48 kwargs,  {'id': 4} <class 'dict'>
+14:48:50 kwargs,  {'tids': '5'} <class 'dict'>
+14:48:50 all_posts:1 start:0 end:5 len(ms):1
+14:48:50 kwargs,  {'id': 5} <class 'dict'>
+14:49:02 all_posts:6 start:0 end:5 len(ms):5
+14:49:02 kwargs,  {'id': 5} <class 'dict'>
+14:49:02 kwargs,  {'id': 3} <class 'dict'>
+14:49:02 kwargs,  {'id': 1} <class 'dict'>
+14:49:02 kwargs,  {'id': 2} <class 'dict'>
